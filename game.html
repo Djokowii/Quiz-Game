@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            /* background: url('back.jpg') no-repeat center center fixed; */
+            background: url('2.jpg') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             flex-direction: column;
@@ -42,24 +43,27 @@
             border: none;
             padding: 0;
             cursor: pointer;
-            transition: transform 0.4s ease; /* Add transition for smooth animation */
+            transition: transform 0.4s ease;
+            /* Add transition for smooth animation */
         }
 
         .start-button:hover {
-            transform: scale(1.1); /* Scale up on hover */
+            transform: scale(1.1);
+            /* Scale up on hover */
         }
 
         .start-button:active {
-            transform: scale(0.95); /* Scale down when clicked */
+            transform: scale(0.95);
+            /* Scale down when clicked */
         }
 
         .start-button img {
-            width: 150px;
+            width: 230px;
             height: auto;
             display: block;
         }
 
-        @media (max-width: 600px) {
+        /* @media (max-width: 600px) {
             h1 {
                 font-size: 1.5rem;
             }
@@ -70,25 +74,20 @@
 
             .start-button img {
                 width: 120px;
-            }
-        }
+            } */
+
+
     </style>
 </head>
+
 <body>
     <h1>Welcome to the Quiz Game!</h1>
     <p>Test your knowledge with our fun and engaging quizzes.</p>
     <a href="tamp2.html">
-    <button class="start-button" id="startButton">
-        <img src="/tombol.png" alt="Start Quiz">
-    </button>
-</a>
-    <script>
-        const startButton = document.getElementById('startButton');
-
-        startButton.addEventListener('click', () => {
-            alert('The quiz will start soon!');
-            // Add logic here to navigate to the quiz page or load the first question
-        });
-    </script>
+        <button class="start-button" id="startButton">
+            <img src="/tombol.png" alt="Start Quiz">
+        </button>
+    </a>
 </body>
+
 </html>

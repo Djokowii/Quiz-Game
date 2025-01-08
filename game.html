@@ -42,6 +42,15 @@
             border: none;
             padding: 0;
             cursor: pointer;
+            transition: transform 0.4s ease; /* Add transition for smooth animation */
+        }
+
+        .start-button:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .start-button:active {
+            transform: scale(0.95); /* Scale down when clicked */
         }
 
         .start-button img {
@@ -68,10 +77,11 @@
 <body>
     <h1>Welcome to the Quiz Game!</h1>
     <p>Test your knowledge with our fun and engaging quizzes.</p>
+    <a href="tamp2.html">
     <button class="start-button" id="startButton">
         <img src="/tombol.png" alt="Start Quiz">
     </button>
-
+</a>
     <script>
         const startButton = document.getElementById('startButton');
 

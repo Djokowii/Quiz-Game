@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #555555;
+            margin-bottom: 20px;
+        }
+
+        .start-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .start-button img {
+            width: 200px;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Quiz Game!</h1>
+    <p>Test your knowledge with our fun and engaging quizzes.</p>
+    <button class="start-button" id="startButton">
+        <img src="/tombol.png" alt="Start Quiz">
+    </button>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+
+        startButton.addEventListener('click', () => {
+            alert('The quiz will start soon!');
+            // Add logic here to navigate to the quiz page or load the first question
+        });
+    </script>
+</body>
+</html>

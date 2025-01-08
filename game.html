@@ -39,6 +39,15 @@
             border: none;
             padding: 0;
             cursor: pointer;
+            transition: transform 0.4s ease; /* Add transition for smooth animation */
+        }
+
+        .start-button:hover {
+            transform: scale(1.1); /* Scale up on hover */
+        }
+
+        .start-button:active {
+            transform: scale(0.95); /* Scale down when clicked */
         }
 
         .start-button img {

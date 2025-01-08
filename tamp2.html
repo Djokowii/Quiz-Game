@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mata Pelajaran</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4caf50;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .subject {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            background-color: #e8f5e9;
+        }
+
+        .subject:nth-child(even) {
+            background-color: #dcedc8;
+        }
+
+        .subject:last-child {
+            border-bottom: none;
+        }
+
+        .subject-icon {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            color: #4caf50;
+            margin-right: 10px;
+        }
+
+        .subject-name {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .subject-score {
+            background: yellow;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">Mata Pelajaran</div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-moon"></i></div>
+        <div class="subject-name">Islam</div>
+        <div class="subject-score">4</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-star"></i></div>
+        <div class="subject-name">Tauhid</div>
+        <div class="subject-score">0</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-hand-holding-water"></i></div>
+        <div class="subject-name">Wudhu</div>
+        <div class="subject-score">0</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-utensils"></i></div>
+        <div class="subject-name">Puasa</div>
+        <div class="subject-score">0</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-hand-holding-heart"></i></div>
+        <div class="subject-name">Zakat</div>
+        <div class="subject-score">0</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-book"></i></div>
+        <div class="subject-name">Fiqih</div>
+        <div class="subject-score">0</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-history"></i></div>
+        <div class="subject-name">Sejarah Islam</div>
+        <div class="subject-score">0</div>
+    </div>
+
+    <div class="subject">
+        <div class="subject-icon"><i class="fas fa-kaaba"></i></div>
+        <div class="subject-name">Haji</div>
+        <div class="subject-score">0</div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -98,16 +98,38 @@
         }
 
         .result {
-            position: absolute; /* Menggunakan absolute positioning */
+            position: absolute;
+<<<<<<< HEAD
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Memposisikan tepat di tengah */
+            transform: translate(-50%, -50%);
             font-size: 1.5em;
             font-weight: bold;
-            opacity: 0; /* Awalnya tidak terlihat */
-            transition: opacity 0.5s ease-in-out; /* Transisi untuk animasi fade-in */
-            animation: fadeIn 0.5s ease-in-out forwards; /* Animasi fade-in */
-            animation-delay: 1s; /* Delay 1 detik sebelum animasi dimulai */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out forwards;
+            animation-delay: 1s;
+            background-color: white; /* Latar belakang card */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+=======
+            /* Menggunakan absolute positioning */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Memposisikan tepat di tengah */
+            font-size: 1.5em;
+            font-weight: bold;
+            opacity: 0;
+            /* Awalnya tidak terlihat */
+            transition: opacity 0.5s ease-in-out;
+            /* Transisi untuk animasi fade-in */
+            animation: fadeIn 0.5s ease-in-out forwards;
+            /* Animasi fade-in */
+            animation-delay: 1s;
+            /* Delay 1 detik sebelum animasi dimulai */
+>>>>>>> 8ce2da4f2d7a62854097560338d1b49221a6164e
         }
 
         @keyframes fadeIn {
@@ -118,7 +140,10 @@
             to {
                 opacity: 1;
             }
-            
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8ce2da4f2d7a62854097560338d1b49221a6164e
         }
 
         #score {

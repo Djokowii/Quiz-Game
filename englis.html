@@ -98,53 +98,26 @@
         }
 
         .result {
-            position: absolute;
-<<<<<<< HEAD
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.5em;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            animation: fadeIn 0.5s ease-in-out forwards;
-            animation-delay: 1s;
-            background-color: white; /* Latar belakang card */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-=======
-            /* Menggunakan absolute positioning */
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            /* Memposisikan tepat di tengah */
-            font-size: 1.5em;
-            font-weight: bold;
-            opacity: 0;
-            /* Awalnya tidak terlihat */
-            transition: opacity 0.5s ease-in-out;
-            /* Transisi untuk animasi fade-in */
-            animation: fadeIn 0.5s ease-in-out forwards;
-            /* Animasi fade-in */
-            animation-delay: 1s;
-            /* Delay 1 detik sebelum animasi dimulai */
->>>>>>> 8ce2da4f2d7a62854097560338d1b49221a6164e
-        }
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  animation-delay: 1s;
+  background-color: #f5f5f5; /* Light gray background */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8ce2da4f2d7a62854097560338d1b49221a6164e
-        }
+.correct {
+  background-color: #a0f0a0 !important; /* Green for correct answer */
+  border: 2px solid #87e887; /* Green border for highlight */
+}
 
         #score {
             font-size: 1.2em;
@@ -344,46 +317,61 @@
         }
 
         function checkAnswer(selectedAnswer) {
-            resultDisplay.innerText = '';  // Menghapus teks sebelumnya
+            resultDisplay.innerText = ''; // Clear previous text
             const options = optionsContainer.children;
             let correctAnswerElement;
-
             for (let i = 0; i < options.length; i++) {
                 if (options[i].innerText === questions[currentQuestion].answer) {
                     correctAnswerElement = options[i];
                     break;
                 }
             }
-
             if (selectedAnswer === questions[currentQuestion].answer) {
-                resultDisplay.innerText = "Correct!";
+                resultDisplay.innerText = "Correct!"; // Set text here!
                 resultDisplay.style.color = "green";
                 correctAnswerElement.classList.add('correct');
                 score += 10;
                 scoreDisplay.innerText = `Score: ${score}`;
+                resultDisplay.style.opacity = 1; // tampilkan result
+                resultDisplay.style.animation = 'none';
                 setTimeout(() => {
+                    resultDisplay.style.animation = 'fadeIn 0.5s ease-in-out forwards';
                     correctAnswerElement.classList.remove('correct');
                     currentQuestion++;
                     loadQuestion();
-                    resultDisplay.innerText = ''; // Menghapus teks hasil setelah soal berikutnya
+                    setTimeout(() => {
+                        resultDisplay.style.opacity = 0; // sembunyikan result
+                    }, 1000);
                 }, 500);
             } else {
                 lives--;
                 livesDisplay.innerText = `Lives: ${lives}`;
-                resultDisplay.innerText = "Wrong answer!";
+                resultDisplay.innerText = "Wrong answer!"; // Set text here!
                 resultDisplay.style.color = "red";
-
-                // Hapus teks "Wrong answer!" setelah 2 detik
-                setTimeout(() => {
-                    resultDisplay.innerText = '';
-                }, 1500);
-
+                let wrongAnswerElement;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].innerText === selectedAnswer) {
+                        wrongAnswerElement = options[i];
+                        break;
+                    }
+                }
+                wrongAnswerElement.classList.add('wrong');
+                resultDisplay.style.opacity = 1; // tampilkan result
+                resultDisplay.style.animation = 'none';
+                setTimeout(()=>{
+                    resultDisplay.style.animation = 'fadeIn 0.5s ease-in-out forwards';
+                    wrongAnswerElement.classList.remove('wrong');
+                    setTimeout(() => {
+                        resultDisplay.style.opacity = 0; // sembunyikan result
+                    }, 1000);
+                },500)
                 if (lives === 0) {
-                    endGame("Game Over!");
+                    gameOverMessage.innerText="Game Over!";
+                    gameOverScreen.style.display = 'block';
                 }
             }
         }
-
+                
         function endGame(message) {
             alert(message);
             location.reload();

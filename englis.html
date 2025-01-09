@@ -78,22 +78,32 @@
         }
 
         .lives {
-            margin-top: 10px;
             font-size: 18px;
             font-weight: bold;
             color: red;
+            
+        }
+        
+        .lives i {
+            margin-right: 5px; /* Memberi jarak antar icon hati */
+            color: red; /* Warna hati */
+            font-size: 1.2em;
         }
         .result {
-            position: absolute; /* Menggunakan absolute positioning */
+            position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Memposisikan tepat di tengah */
+            transform: translate(-50%, -50%);
             font-size: 1.5em;
             font-weight: bold;
-            opacity: 0; /* Awalnya tidak terlihat */
-            transition: opacity 0.5s ease-in-out; /* Transisi untuk animasi fade-in */
-            animation: fadeIn 0.5s ease-in-out forwards; /* Animasi fade-in */
-            animation-delay: 1s; /* Delay 1 detik sebelum animasi dimulai */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out forwards;
+            animation-delay: 1s;
+            background-color: white; /* Latar belakang card */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         @keyframes fadeIn {
             from {
@@ -102,10 +112,8 @@
             to {
                 opacity: 1;
             }
-            
         }
         #score {
-            margin-top: 10px;
             font-size: 1.2em;
             font-weight: bold;
             color: blue; /* Warna skor */

@@ -12,19 +12,11 @@
             background-size: cover;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
             text-align: center;
-
-        }
-
-        .container {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            width: 400px;
-            overflow: hidden;
+            padding: 20px;
         }
 
         .header {
@@ -34,23 +26,34 @@
             color: white;
             font-size: 20px;
             font-weight: bold;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
         }
 
         .subject {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 15px;
-            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            border: 2px solid #ddd;
             background-color: #e8f5e9;
+            margin: 15px 0;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: .3s;
+        }
+        .subject:hover{
+            max-width: 400px;
+            padding: 20px;
+            margin: 20px 0;
         }
 
         .subject:nth-child(even) {
             background-color: #dcedc8;
-        }
-
-        .subject:last-child {
-            border-bottom: none;
         }
 
         .subject-icon {
@@ -78,57 +81,54 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="header">Mata Pelajaran</div>
+<div class="header">Materi</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-moon"></i></div>
-        <div class="subject-name">Islam</div>
-        <div class="subject-score">4</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-moon"></i></div>
+    <div class="subject-name"> Home</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-star"></i></div>
-        <div class="subject-name">Tauhid</div>
-        <div class="subject-score">0</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-star"></i></div>
+    <div class="subject-name">Schools</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-hand-holding-water"></i></div>
-        <div class="subject-name">Wudhu</div>
-        <div class="subject-score">0</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-hand-holding-water"></i></div>
+    <div class="subject-name">Jungle</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-utensils"></i></div>
-        <div class="subject-name">Puasa</div>
-        <div class="subject-score">0</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-utensils"></i></div>
+    <div class="subject-name">Sea</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-hand-holding-heart"></i></div>
-        <div class="subject-name">Zakat</div>
-        <div class="subject-score">0</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-hand-holding-heart"></i></div>
+    <div class="subject-name">Mosque</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-book"></i></div>
-        <div class="subject-name">Fiqih</div>
-        <div class="subject-score">0</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-book"></i></div>
+    <div class="subject-name">Office</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-history"></i></div>
-        <div class="subject-name">Sejarah Islam</div>
-        <div class="subject-score">0</div>
-    </div>
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-history"></i></div>
+    <div class="subject-name">Kitchen</div>
+    <div class="subject-score">0</div>
+</div>
 
-    <div class="subject">
-        <div class="subject-icon"><i class="fas fa-kaaba"></i></div>
-        <div class="subject-name">Haji</div>
-        <div class="subject-score">0</div>
-    </div>
-
+<div class="subject">
+    <div class="subject-icon"><i class="fas fa-kaaba"></i></div>
+    <div class="subject-name">Toilet</div>
+    <div class="subject-score">0</div>
 </div>
 
 </body>

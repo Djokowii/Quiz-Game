@@ -248,6 +248,13 @@
             /* Warna hati */
             font-size: 1.2em;
         }
+        #question-number { /* Style untuk nomor soal */
+            font-size: 1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #555;
+            text-align: left; /* Nomor soal di kiri */
+        }
     </style>
 </head>
 
@@ -261,7 +268,7 @@
 
     <div id="quiz">
         <div class="question">
-            <p id="question-text"></p>
+            <div id="question-number">1/10</div> <p id="question-text"></p>
             <div class="options" id="options-container"></div>
         </div>
     </div>
@@ -269,7 +276,7 @@
 
     <div id="game-over">
         <p id="game-over-message">Game Over!</p>
-        <button onclick="restartGame()">Restart</button>
+        <a href="tamp2.html"><button onclick="restartGame()">Restart</button></a>
     </div>
     <script>
         const questions = [
@@ -293,20 +300,27 @@
         const livesDisplay = document.getElementById('lives');
         const resultDisplay = document.getElementById('result');
         const scoreDisplay = document.getElementById('score'); // Elemen untuk menampilkan skor
+ 
+const gameOverScreen = document.getElementById('game-over');
+const gameOverMessage = document.getElementById('game-over-message');
+livesDisplay.innerText = `Lives: ${lives}`; // Inisialisasi tampilan awal
+        const questionNumberDisplay = document.getElementById('question-number');
+        const totalQuestions = questions.length;
 
         function loadQuestion() {
-            if (lives < 1) { // Perubahan di sini!
-                endGame("Game Over!");
+            if (lives < 1) {
+                gameOverMessage.innerText="Game Over!";
+                gameOverScreen.style.display = 'block';
                 return;
             }
             if (currentQuestion >= questions.length) {
-                endGame(`Congratulations! You finished the quiz. Your final score is: ${score}`);
+                gameOverMessage.innerText=`Congratulations! You finished the quiz. Your final score is: ${score}`;
+                gameOverScreen.style.display = 'block';
                 return;
             }
-
+            questionNumberDisplay.innerText = `${currentQuestion + 1}/${totalQuestions}`; // Update nomor soal
             questionText.innerText = questions[currentQuestion].text;
             optionsContainer.innerHTML = '';
-
             questions[currentQuestion].options.forEach(option => {
                 const optionElement = document.createElement('div');
                 optionElement.classList.add('option');
@@ -315,7 +329,6 @@
                 optionsContainer.appendChild(optionElement);
             });
         }
-
         function checkAnswer(selectedAnswer) {
             resultDisplay.innerText = ''; // Clear previous text
             const options = optionsContainer.children;
@@ -358,6 +371,16 @@
                 wrongAnswerElement.classList.add('wrong');
                 resultDisplay.style.opacity = 1; // tampilkan result
                 resultDisplay.style.animation = 'none';
+                wrongAnswerElement.classList.add('wrong');
+            resultDisplay.style.opacity = 1; // tampilkan result
+            resultDisplay.style.animation = 'none';
+            if (score >= 10){
+                score -= 10; // Kurangi score jika jawaban salah
+                scoreDisplay.innerText = `Score: ${score}`; // Update tampilan score
+            } else {
+                score = 0;
+                scoreDisplay.innerText = `Score: ${score}`;
+            }
                 setTimeout(()=>{
                     resultDisplay.style.animation = 'fadeIn 0.5s ease-in-out forwards';
                     wrongAnswerElement.classList.remove('wrong');

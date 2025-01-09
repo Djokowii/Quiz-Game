@@ -74,69 +74,83 @@
 </head>
 <body>
 
-<div class="header">English Quiz</div>
+    <div class="header">English House Quiz</div>
 
-<div id="quiz">
-    <div class="question">
-        <p id="question-text">What is this?</p>
-        <div class="options">
-            <div class="option" onclick="checkAnswer(this, 'chair')">Chair</div>
-            <div class="option" onclick="checkAnswer(this, 'table')">Table</div>
-            <div class="option" onclick="checkAnswer(this, 'bed')">Bed</div>
-            <div class="option" onclick="checkAnswer(this, 'sofa')">Sofa</div>
+    <div id="quiz">
+        <div class="question">
+            <p id="question-text"></p>
+            <div class="options" id="options-container">
+                </div>
         </div>
     </div>
-</div>
-
-<div class="lives" id="lives">Lives: 3</div>
-
-<script>
-    const questions = [
-        { text: 'What is this? (Picture of Chair)', answer: 'Chair' },
-        { text: 'What is this? (Picture of Table)', answer: 'Table' },
-        { text: 'What is this? (Picture of Bed)', answer: 'Bed' },
-        { text: 'What is this? (Picture of Sofa)', answer: 'Sofa' },
-        { text: 'What is this? (Picture of Door)', answer: 'Door' },
-        { text: 'What is this? (Picture of Window)', answer: 'Window' },
-        { text: 'What is this? (Picture of Lamp)', answer: 'Lamp' },
-        { text: 'What is this? (Picture of Carpet)', answer: 'Carpet' },
-        { text: 'What is this? (Picture of Cupboard)', answer: 'Cupboard' },
-        { text: 'What is this? (Picture of Mirror)', answer: 'Mirror' }
-    ];
-
-    let currentQuestion = 0;
-    let lives = 3;
-
-    function loadQuestion() {
-        if (lives <= 0) {
-            alert('Game Over!');
-            location.reload();
-            return;
+    
+    <div class="lives" id="lives">Lives: 3</div>
+    <div class="result" id="result"></div>
+    
+    <script>
+        const questions = [
+            { text: "Where do you cook meals?", options: ["Bedroom", "Kitchen", "Bathroom", "Living Room"], answer: "Kitchen" },
+            { text: "What is the room for sleeping called?", options: ["Dining Room", "Garage", "Bedroom", "Attic"], answer: "Bedroom" },
+            { text: "Where do you usually watch TV?", options: ["Kitchen", "Bathroom", "Living Room", "Garden"], answer: "Living Room" },
+            { text: "Where do you take a shower?", options: ["Bedroom", "Kitchen", "Bathroom", "Garage"], answer: "Bathroom" },
+            { text: "What do you call the space for parking a car?", options: ["Attic", "Garage", "Basement", "Garden"], answer: "Garage" },
+            { text: "Where do you eat meals?", options: ["Dining Room", "Bedroom", "Bathroom", "Living Room"], answer: "Dining Room" },
+            { text: "What is the room under the house called?", options: ["Attic", "Roof", "Basement", "Garden"], answer: "Basement" },
+            { text: "What is the top covering of a house called?", options: ["Wall", "Window", "Roof", "Door"], answer: "Roof" },
+            { text: "What do you call the outdoor area around a house?", options: ["Kitchen", "Bathroom", "Garage", "Garden"], answer: "Garden" },
+            { text: "Where might you store old things in a house?", options: ["Bedroom", "Attic", "Kitchen", "Bathroom"], answer: "Attic" },
+        ];
+    
+        let currentQuestion = 0;
+        let lives = 3;
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const livesDisplay = document.getElementById('lives');
+        const resultDisplay = document.getElementById('result');
+    
+        function loadQuestion() {
+            if (lives <= 0) {
+                endGame("Game Over!");
+                return;
+            }
+            if (currentQuestion >= questions.length) {
+                endGame("Congratulations! You finished the quiz.");
+                return;
+            }
+    
+            questionText.innerText = questions[currentQuestion].text;
+            optionsContainer.innerHTML = ''; // Bersihkan opsi sebelumnya
+    
+            questions[currentQuestion].options.forEach(option => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.innerText = option;
+                optionElement.addEventListener('click', () => checkAnswer(option));
+                optionsContainer.appendChild(optionElement);
+            });
         }
-        if (currentQuestion >= questions.length) {
-            alert('Congratulations! You finished the quiz.');
-            location.reload();
-            return;
+    
+        function checkAnswer(selectedAnswer) {
+            resultDisplay.innerText = ''; // Clear previous result
+            if (selectedAnswer === questions[currentQuestion].answer) {
+                resultDisplay.innerText = "Correct!";
+                resultDisplay.style.color = "green";
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                lives--;
+                livesDisplay.innerText = `Lives: ${lives}`;
+                resultDisplay.innerText = "Wrong answer!";
+                resultDisplay.style.color = "red";
+            }
         }
-
-        const questionElement = document.getElementById('question-text');
-        questionElement.innerText = questions[currentQuestion].text;
-    }
-
-    function checkAnswer(element, answer) {
-  if (answer === questions[currentQuestion].answer) {
-    alert('Correct!');
-    currentQuestion++; // Move to next question only if answer is correct
-    loadQuestion();
-  } else {
-    lives--;
-    document.getElementById('lives').innerText = `Lives: ${lives}`;
-    alert('Wrong answer!');
-  }
-}
-
-    loadQuestion();
-</script>
+        function endGame(message) {
+            alert(message);
+            location.reload();
+        }
+    
+        loadQuestion();
+    </script>
 
 </body>
 </html>

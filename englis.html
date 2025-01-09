@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,18 +63,24 @@
         .option:hover {
             background: #e0f7fa;
         }
+
         .option {
             /* ... */
-            transition: background-color 0.3s, transform 0.2s; /* Tambahkan transisi untuk animasi */
+            transition: background-color 0.3s, transform 0.2s;
+            /* Tambahkan transisi untuk animasi */
         }
-        
+
         .option.correct {
-            background-color: #4CAF50 !important; /* Hijau untuk benar */
+            background-color: #4CAF50 !important;
+            /* Hijau untuk benar */
             color: white;
-            transform: scale(1.1); /* Efek membesar sedikit */
+            transform: scale(1.1);
+            /* Efek membesar sedikit */
         }
+
         .option.wrong {
-            background-color: #f44336 !important; /* Merah untuk salah */
+            background-color: #f44336 !important;
+            /* Merah untuk salah */
             color: white;
         }
 
@@ -89,51 +96,60 @@
             color: red; /* Warna hati */
             font-size: 1.2em;
         }
+
         .result {
-            position: absolute;
+            position: absolute; /* Menggunakan absolute positioning */
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Memposisikan tepat di tengah */
             font-size: 1.5em;
             font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            animation: fadeIn 0.5s ease-in-out forwards;
-            animation-delay: 1s;
-            background-color: white; /* Latar belakang card */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Awalnya tidak terlihat */
+            transition: opacity 0.5s ease-in-out; /* Transisi untuk animasi fade-in */
+            animation: fadeIn 0.5s ease-in-out forwards; /* Animasi fade-in */
+            animation-delay: 1s; /* Delay 1 detik sebelum animasi dimulai */
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
+            
         }
+
         #score {
             font-size: 1.2em;
             font-weight: bold;
-            color: blue; /* Warna skor */
+            color: blue;
+            /* Warna skor */
         }
+
         #game-over {
-            display: none; /* Sembunyikan awalnya */
-            position: fixed; /* Posisi tetap di layar */
+            display: none;
+            /* Sembunyikan awalnya */
+            position: fixed;
+            /* Posisi tetap di layar */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Latar belakang semi-transparan */
             color: white;
             text-align: center;
             font-size: 2em;
             font-weight: bold;
-            padding-top: 20%; /* Posisikan teks di tengah vertikal */
+            padding-top: 20%;
+            /* Posisikan teks di tengah vertikal */
         }
+
         #game-over button {
-            background-color: #4CAF50; /* Warna tombol */
+            background-color: #4CAF50;
+            /* Warna tombol */
             border: none;
             color: white;
             padding: 15px 32px;
@@ -144,76 +160,99 @@
             margin-top: 20px;
             cursor: pointer;
         }
+
         .card-container {
-            display: flex; /* Menggunakan flexbox untuk tata letak horizontal */
-            justify-content: space-around; /* Memberi jarak di antara elemen */
-            margin-bottom: 20px; /* Memberi jarak dengan pertanyaan di bawahnya */
+            display: flex;
+            /* Menggunakan flexbox untuk tata letak horizontal */
+            justify-content: space-around;
+            /* Memberi jarak di antara elemen */
+            margin-bottom: 20px;
+            /* Memberi jarak dengan pertanyaan di bawahnya */
             padding: 10px;
-            background-color: #f0f0f0; /* Warna latar belakang card */
-            border-radius: 8px; /* Sudut membulat */
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+            background-color: #f0f0f0;
+            /* Warna latar belakang card */
+            border-radius: 8px;
+            /* Sudut membulat */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            /* Efek bayangan */
         }
-        .card-container div{
+
+        .card-container div {
             font-size: 1.2em;
             font-weight: bold;
         }
-    
+
         .card-container {
             display: flex;
             justify-content: space-around;
             width: 50%;
             margin-bottom: 30px;
             padding: 20px;
-            background-color: #fff; /* Warna latar belakang card */
+            background-color: #fff;
+            /* Warna latar belakang card */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .card-container div {
             font-size: 1.2em;
             font-weight: 600;
-            color:black;
+            color: black;
         }
-       
+
         .question {
             margin-bottom: 20px;
         }
+
         #question-text {
             font-size: 1.4em;
             font-weight: 600;
             margin-bottom: 15px;
             color: #333;
         }
+
         .options div {
             padding: 15px;
             margin-bottom: 10px;
             background-color: #eee;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* Transisi untuk hover effect */
+            transition: background-color 0.3s ease;
+            /* Transisi untuk hover effect */
             border: 1px solid #ddd;
         }
-         .options div:hover {
-            background-color: #ddd; /* Warna latar belakang saat hover */
+
+        .options div:hover {
+            background-color: #ddd;
+            /* Warna latar belakang saat hover */
             border: 1px solid #bbb;
         }
+
         .correct {
             background-color: #a0f0a0 !important;
         }
+
         .wrong {
             background-color: #f0a0a0 !important;
         }
+
         .lives {
-            display: flex; /* Agar icon hati berjejer horizontal */
-            align-items: center; /* Agar icon hati berada di tengah vertikal */
-        }
-        .lives i {
-            margin-right: 5px; /* Memberi jarak antar icon hati */
-            color: red; /* Warna hati */
-            font-size: 1.2em;
+            display: flex;
+            /* Agar icon hati berjejer horizontal */
+            align-items: center;
+            /* Agar icon hati berada di tengah vertikal */
         }
 
+        .lives i {
+            margin-right: 5px;
+            /* Memberi jarak antar icon hati */
+            color: red;
+            /* Warna hati */
+            font-size: 1.2em;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="header">English House Quiz</div>
@@ -247,7 +286,7 @@
             { text: "What do you call the outdoor area around a house?", options: ["Kitchen", "Bathroom", "Garage", "Garden"], answer: "Garden" },
             { text: "Where might you store old things in a house?", options: ["Bedroom", "Attic", "Kitchen", "Bathroom"], answer: "Attic" },
         ];
-    
+
         let currentQuestion = 0;
         let lives = 3;
         let score = 0; // Inisialisasi skor
@@ -256,7 +295,7 @@
         const livesDisplay = document.getElementById('lives');
         const resultDisplay = document.getElementById('result');
         const scoreDisplay = document.getElementById('score'); // Elemen untuk menampilkan skor
-    
+
         function loadQuestion() {
             if (lives < 1) { // Perubahan di sini!
                 endGame("Game Over!");
@@ -266,10 +305,10 @@
                 endGame(`Congratulations! You finished the quiz. Your final score is: ${score}`);
                 return;
             }
-    
+
             questionText.innerText = questions[currentQuestion].text;
             optionsContainer.innerHTML = '';
-    
+
             questions[currentQuestion].options.forEach(option => {
                 const optionElement = document.createElement('div');
                 optionElement.classList.add('option');
@@ -278,51 +317,56 @@
                 optionsContainer.appendChild(optionElement);
             });
         }
-    
-        function checkAnswer(selectedAnswer) {
-        resultDisplay.innerText = '';
-        const options = optionsContainer.children; // Ambil semua elemen opsi
-        let correctAnswerElement;
 
-        for (let i = 0; i < options.length; i++) {
-            if (options[i].innerText === questions[currentQuestion].answer) {
-                correctAnswerElement = options[i];
-                break;
+        function checkAnswer(selectedAnswer) {
+            resultDisplay.innerText = '';  // Menghapus teks sebelumnya
+            const options = optionsContainer.children;
+            let correctAnswerElement;
+
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].innerText === questions[currentQuestion].answer) {
+                    correctAnswerElement = options[i];
+                    break;
+                }
+            }
+
+            if (selectedAnswer === questions[currentQuestion].answer) {
+                resultDisplay.innerText = "Correct!";
+                resultDisplay.style.color = "green";
+                correctAnswerElement.classList.add('correct');
+                score += 10;
+                scoreDisplay.innerText = `Score: ${score}`;
+                setTimeout(() => {
+                    correctAnswerElement.classList.remove('correct');
+                    currentQuestion++;
+                    loadQuestion();
+                    resultDisplay.innerText = ''; // Menghapus teks hasil setelah soal berikutnya
+                }, 500);
+            } else {
+                lives--;
+                livesDisplay.innerText = `Lives: ${lives}`;
+                resultDisplay.innerText = "Wrong answer!";
+                resultDisplay.style.color = "red";
+
+                // Hapus teks "Wrong answer!" setelah 2 detik
+                setTimeout(() => {
+                    resultDisplay.innerText = '';
+                }, 1500);
+
+                if (lives === 0) {
+                    endGame("Game Over!");
+                }
             }
         }
 
-        if (selectedAnswer === questions[currentQuestion].answer) {
-            resultDisplay.innerText = "Correct!";
-            resultDisplay.style.color = "green";
-            correctAnswerElement.classList.add('correct'); // Tambahkan class 'correct'
-            score += 10;
-            scoreDisplay.innerText = `Score: ${score}`;
-            setTimeout(() => { // Delay sebelum lanjut ke pertanyaan berikutnya
-                correctAnswerElement.classList.remove('correct');
-                currentQuestion++;
-                loadQuestion();
-            }, 500); // Delay 0.5 detik
-        } else {
-  lives--;
-  livesDisplay.innerText = `Lives: ${lives}`;
-  resultDisplay.innerText = "Wrong answer!";
-  resultDisplay.style.color = "red";
-  // ... code for finding and styling wrong answer (unchanged)
+        function endGame(message) {
+            alert(message);
+            location.reload();
+        }
 
-  // Check for game over only when lives reach 0 (correction)
-  if (lives === 0) {
-    endGame("Game Over!");
-  }
-}
-        
-    }
-    function endGame(message) {
-        alert(message);
-        location.reload();
-    }
-
-    loadQuestion();
-</script>
+        loadQuestion();
+    </script>
 
 </body>
+
 </html>

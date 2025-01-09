@@ -47,11 +47,8 @@
 
         .responsive-image {
             max-width: 90%;
-            /* Membatasi lebar gambar hingga 90% dari layar */
             height: auto;
-            /* Memastikan proporsi gambar tetap */
             margin-bottom: 20px;
-            /* Memberi jarak di bawah gambar */
         }
 
         .start-button {
@@ -71,7 +68,7 @@
         }
 
         .start-button img {
-            width: 300px;
+            width: 600px; /* Perbesar ukuran tombol */
             height: auto;
             display: block;
         }
@@ -87,13 +84,11 @@
             }
 
             .start-button img {
-                width: 120px;
+                width: 180px; /* Ukuran tombol lebih kecil pada layar kecil */
             }
 
-            /* Atur posisi container */
             .container {
                 margin-top: -20px;
-                /* Geser sedikit ke atas */
             }
         }
     </style>
@@ -101,7 +96,6 @@
 
 <body>
     <div class="container">
-        <!-- Tambahkan class "responsive-image" pada tag img -->
         <div class="kotak">
             <img src="/boyzen.png" alt="" class="responsive-image">
         </div>
@@ -110,6 +104,7 @@
                 <img src="/tombol.png" alt="Start Quiz">
             </button>
         </a>
+        
     </div>
 </body>
 

@@ -38,32 +38,46 @@
             margin-bottom: 20px;
         }
 
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .responsive-image {
+            max-width: 90%;
+            /* Membatasi lebar gambar hingga 90% dari layar */
+            height: auto;
+            /* Memastikan proporsi gambar tetap */
+            margin-bottom: 20px;
+            /* Memberi jarak di bawah gambar */
+        }
+
         .start-button {
             background: none;
             border: none;
             padding: 0;
             cursor: pointer;
             transition: transform 0.4s ease;
-            /* Add transition for smooth animation */
         }
 
         .start-button:hover {
             transform: scale(1.1);
-            /* Scale up on hover */
         }
 
         .start-button:active {
             transform: scale(0.95);
-            /* Scale down when clicked */
         }
 
         .start-button img {
-            width: 230px;
+            width: 300px;
             height: auto;
             display: block;
         }
 
-        /* @media (max-width: 600px) {
+        /* Media query untuk layar kecil */
+        @media (max-width: 600px) {
             h1 {
                 font-size: 1.5rem;
             }
@@ -74,13 +88,19 @@
 
             .start-button img {
                 width: 120px;
-            } */
+            }
 
-
+            /* Atur posisi container */
+            .container {
+                margin-top: -20px;
+                /* Geser sedikit ke atas */
+            }
+        }
     </style>
 </head>
 
 <body>
+<<<<<<< HEAD
     <h1>Welcome to the Quiz Game!</h1>
     <p>Test your knowledge with our fun and engaging quizzes.</p>
     <a href="option.html">
@@ -88,6 +108,17 @@
             <img src="/tombol.png" alt="Start Quiz">
         </button>
     </a>
+=======
+    <div class="container">
+        <!-- Tambahkan class "responsive-image" pada tag img -->
+        <img src="/boyzen.png" alt="" class="responsive-image">
+        <a href="tamp2.html">
+            <button class="start-button" id="startButton">
+                <img src="/tombol.png" alt="Start Quiz">
+            </button>
+        </a>
+    </div>
+>>>>>>> a9e2b1d62c2382f583f3f5423146f2c6c7fbf1c3
 </body>
 
 </html>

@@ -161,6 +161,73 @@
             margin-top: 20px;
             cursor: pointer;
         }
+        .card-container {
+            display: flex; /* Menggunakan flexbox untuk tata letak horizontal */
+            justify-content: space-around; /* Memberi jarak di antara elemen */
+            margin-bottom: 20px; /* Memberi jarak dengan pertanyaan di bawahnya */
+            padding: 10px;
+            background-color: #f0f0f0; /* Warna latar belakang card */
+            border-radius: 8px; /* Sudut membulat */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+        }
+        .card-container div{
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            width: 50%;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff; /* Warna latar belakang card */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-container div {
+            font-size: 1.2em;
+            font-weight: 600;
+            color:black;
+        }
+       
+        .question {
+            margin-bottom: 20px;
+        }
+        #question-text {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .options div {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Transisi untuk hover effect */
+            border: 1px solid #ddd;
+        }
+         .options div:hover {
+            background-color: #ddd; /* Warna latar belakang saat hover */
+            border: 1px solid #bbb;
+        }
+        .correct {
+            background-color: #a0f0a0 !important;
+        }
+        .wrong {
+            background-color: #f0a0a0 !important;
+        }
+        .lives {
+            display: flex; /* Agar icon hati berjejer horizontal */
+            align-items: center; /* Agar icon hati berada di tengah vertikal */
+        }
+        .lives i {
+            margin-right: 5px; /* Memberi jarak antar icon hati */
+            color: red; /* Warna hati */
+            font-size: 1.2em;
+        }
 
     </style>
 </head>
@@ -179,9 +246,6 @@
             <div class="options" id="options-container"></div>
         </div>
     </div>
-    <div class="lives" id="lives">Lives: 3</div>
-    <div class="result" id="result"></div>
-    <div id="score">Score: 0</div>
 
     <div id="web-notification"
         style="display: none; position: fixed; top: 0; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 15px; width: 80%; text-align: center; font-size: 1.2em; z-index: 9999; border-radius: 5px;">

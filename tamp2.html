@@ -16,7 +16,7 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            padding: 20px;
+            padding: 70px;
         }
 
         .header {
@@ -42,10 +42,14 @@
             background-color: #e8f5e9;
             margin: 15px 0;
             border-radius: 10px;
-            width: 100%;
-            max-width: 350px;
+            width: 400px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             transition: .3s;
+            
+        }
+        a{
+            text-decoration: none;
+            color: black;
         }
         .subject:hover{
             max-width: 400px;
@@ -79,58 +83,110 @@
             font-size: 14px;
             text-align: center;
         }
+        .subject a{
+            text-decoration: none;
+            color: black;
+            transition: .4s;
+        }
+        .tombol-kembali {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: white;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+            padding-left: 13px;
+
+            /* Posisi di pojok kiri atas */
+            position: fixed; /* Penting untuk memposisikan relatif terhadap viewport */
+            top: 10px;    /* Jarak dari atas */
+            left: 10px;   /* Jarak dari kiri */
+        }
+
+        .tombol-kembali:hover {
+            background-color: red;
+        }
+        .tombol-home {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: white;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+
+            /* Posisi di pojok kanan atas */
+            position: fixed;
+            top: 10px;
+            right: 10px; /* Perubahan di sini */
+        }
+
+        .tombol-home:hover {
+            background-color: red;
+        }
+        
     </style>
 </head>
 <body>
+    
+    <a href="game.html" class="tombol-home">  
+        <div class="subject-icon"><i class="fas fa-home"></i></div>
+    </a>
+
+    <a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
 
 <div class="header">Materi</div>
-
+<a href="englis.html">
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-moon"></i></div>
-    <a href="englis.html" style="text-decoration: none; color: black;" ><div class="subject-name"> Home</div></a>
-    <div class="subject-score">0</div>
+    <div class="subject-icon"><i class="fas fa-home"></i></div>
+    <div class="subject-name"> Home</div>
+    <div class="subject-score">1</div>
 </div>
-
+</a>
+<a href="englis2.html">
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-star"></i></div>
+    <div class="subject-icon"><i class="fas fa-school"></i></div>
     <div class="subject-name">Schools</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">2</div>
 </div>
-
+</a>
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-hand-holding-water"></i></div>
+    <div class="subject-icon"><i class="fas fa-tree"></i></div>
     <div class="subject-name">Jungle</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">3</div>
 </div>
 
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-utensils"></i></div>
+    <div class="subject-icon"><i class="fa fa-water"></i></div>
     <div class="subject-name">Sea</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">4</div>
 </div>
 
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-hand-holding-heart"></i></div>
+    <div class="subject-icon"><i class="fas fa-mosque"></i></div>
     <div class="subject-name">Mosque</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">5</div>
 </div>
 
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-book"></i></div>
+    <div class="subject-icon"><i class="fas fa-republican"></i></div>
     <div class="subject-name">Office</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">6</div>
 </div>
 
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-history"></i></div>
+    <div class="subject-icon"><i class="fas fa-playstation"></i></div>
     <div class="subject-name">Kitchen</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">7</div>
 </div>
 
 <div class="subject">
-    <div class="subject-icon"><i class="fas fa-kaaba"></i></div>
+    <div class="subject-icon"><i class="fas fa-restroom"></i></div>
     <div class="subject-name">Toilet</div>
-    <div class="subject-score">0</div>
+    <div class="subject-score">99</div>
 </div>
 
 </body>

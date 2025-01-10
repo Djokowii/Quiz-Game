@@ -195,10 +195,62 @@
             transform: translate(5px, 5px);
             box-shadow: none;
         }
+        .tombol-kembali {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: white;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+            padding-left: 13px;
+
+            /* Posisi di pojok kiri atas */
+            position: fixed; /* Penting untuk memposisikan relatif terhadap viewport */
+            top: 10px;    /* Jarak dari atas */
+            left: 10px;   /* Jarak dari kiri */
+        }
+
+        .tombol-kembali:hover {
+            background-color: red;
+        }
+        .tombol-home {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: white;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+
+            /* Posisi di pojok kanan atas */
+            position: fixed;
+            top: 10px;
+            right: 10px; /* Perubahan di sini */
+        }
+
+        .tombol-home:hover {
+            background-color: red;
+        }
+        .subject-icon {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            color: #4caf50;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body>
+    <a href="game.html" class="tombol-home">  
+        <div class="subject-icon"><i class="fas fa-home"></i></div>
+    </a>
+
+    <a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
+
         <div class="brutalist-card">
         <div class="brutalist-card__header">
             <!-- <div class="brutalist-card__icon">

@@ -370,6 +370,18 @@
         <source src="mp3/backsound.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    <audio id="click-sound">
+        <source src="mp3/click.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <audio id="correct-sound">
+        <source src="mp3/benar.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <audio id="wrong-sound">
+        <source src="mp3/wrong.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
     <a href="game.html" class="tombol-home">  
         <div class="subject-icon"><i class="fas fa-home"></i></div>
     </a>
@@ -446,6 +458,17 @@
                 gameOverScreen.style.display = 'block';
                 return;
             }
+            questions[currentQuestion].options.forEach(option => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.innerText = option;
+                optionElement.addEventListener('click', () => {
+                    playClickSound();
+                    checkAnswer(option);
+                });
+                optionsContainer.appendChild(optionElement);
+            });
+        }
             questionNumberDisplay.innerText = `${currentQuestion + 1}/${totalQuestions}`; // Update nomor soal
             questionText.innerText = questions[currentQuestion].text;
             optionsContainer.innerHTML = '';
@@ -456,7 +479,7 @@
                 optionElement.addEventListener('click', () => checkAnswer(option));
                 optionsContainer.appendChild(optionElement);
             });
-        }
+        
         function checkAnswer(selectedAnswer) {
             resultDisplay.innerText = ''; // Clear previous text
             const options = optionsContainer.children;
@@ -521,7 +544,18 @@
                     gameOverScreen.style.display = 'block';
                 }
             }
+            if (selectedAnswer === questions[currentQuestion].answer) {
+                playCorrectSound(); // Putar suara benar
+                // ... (kode untuk jawaban benar sebelumnya)
+            } else {
+                playWrongSound(); // Putar suara salah
+                // ... (kode untuk jawaban salah sebelumnya)
+            }
         }
+        const backgroundMusic = document.getElementById('background-music');
+        const clickSound = document.getElementById('click-sound');
+        const correctSound = document.getElementById('correct-sound');
+        const wrongSound = document.getElementById('wrong-sound');
         // Fungsi untuk memulai atau me-resume musik latar
         function playBackgroundMusic() {
             backgroundMusic.play();
@@ -532,6 +566,23 @@
             backgroundMusic.pause();
             backgroundMusic.currentTime = 0; // Reset ke awal
         }
+
+
+        function playClickSound() {
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+
+        function playCorrectSound() {
+            correctSound.currentTime = 0;
+            correctSound.play();
+        }
+
+        function playWrongSound() {
+            wrongSound.currentTime = 0;
+            wrongSound.play();
+        }
+
 
         // Tambahkan event listener untuk memastikan musik diputar saat halaman dimuat
         window.addEventListener('load', playBackgroundMusic);

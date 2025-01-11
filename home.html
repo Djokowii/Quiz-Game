@@ -366,6 +366,10 @@
 </head>
 
 <body>
+    <audio id="background-music" loop autoplay>
+        <source src="mp3/backsound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <a href="game.html" class="tombol-home">  
         <div class="subject-icon"><i class="fas fa-home"></i></div>
     </a>
@@ -518,13 +522,29 @@
                 }
             }
         }
+        // Fungsi untuk memulai atau me-resume musik latar
+        function playBackgroundMusic() {
+            backgroundMusic.play();
+        }
 
+        // Fungsi untuk menghentikan musik latar
+        function stopBackgroundMusic() {
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0; // Reset ke awal
+        }
+
+        // Tambahkan event listener untuk memastikan musik diputar saat halaman dimuat
+        window.addEventListener('load', playBackgroundMusic);
+
+        // Modifikasi fungsi endGame untuk menghentikan musik
         function endGame(message) {
+            stopBackgroundMusic(); // Hentikan musik saat game berakhir
             alert(message);
             location.reload();
         }
 
         loadQuestion();
+
     </script>
 
 </body>

@@ -7,18 +7,20 @@
     <title>English Quiz</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('2.jpg') no-repeat center center fixed;
-            background-size: cover;
+    body {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             height: 100vh;
-            text-align: center;
-            padding: 75px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('/2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            padding: 20px;
+
         }
+
 
         .header {
             background: #4caf50;
@@ -326,12 +328,13 @@
 </head>
 
 <body>
-    <a href="game.html" class="tombol-home">  
+    <a href="/game.html" class="tombol-home">
         <div class="subject-icon"><i class="fas fa-home"></i></div>
     </a>
 
-    <a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
-
+    <a href="/menu.html" class="tombol-kembali">
+        <div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div>
+    </a>
     <div class="header">English House Quiz</div>
     <div class="card-container">
         <div class="lives" id="lives">Lives: 3</div>
@@ -343,16 +346,6 @@
             <div id="question-number">1/10</div> <p id="question-text"></p>
             <div class="options" id="options-container"></div>
         </div>
-    </div>
-    <div id="rules-card">
-        <h2>! Rules !</h2>
-        <ol>
-            <li>Answer each question by selecting one of the available options.</li>
-            <li>Each correct answer will earn 10 points.</li>
-            <li>Each incorrect answer will deduct 10 points. If the score is less than 10, the score will become 0.</li>
-            <li>You have 3 chances (lives). If you run out of lives, the game ends.</li>
-            <li>Most Importantly, give this game a five-star rating in Playstore, Have fun😉 .</li>
-        </ol>
     </div>
 
     <div class="result" id="result"></div>

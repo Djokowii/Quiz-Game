@@ -7,30 +7,6 @@
     <title>English Quiz</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        #quiz {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 90%;
-            /* Lebar kotak kuis relatif terhadap layar */
-            max-width: 400px;
-            /* Atur lebar maksimum kotak */
-            margin: 0 auto;
-            /* Pusatkan secara horizontal */
-            padding: 20px;
-            /* Tambahkan jarak dalam kotak */
-            box-sizing: border-box;
-            /* Pastikan padding tidak menambah lebar total */
-            /* background-color: white; */
-            /* Tambahkan latar belakang opsional */
-            border-radius: 10px;
-            /* Opsional: Tambahkan sudut melengkung */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            /* Opsional: Tambahkan bayangan */
-        }
-
-
         body {
             display: flex;
             flex-direction: column;
@@ -39,23 +15,22 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background: url('2.jpg') no-repeat center center fixed;
+            background: url('/2.jpg') no-repeat center center fixed;
             background-size: cover;
             padding: 20px;
-            /* Tambahkan jarak layar ke konten */
-            box-sizing: border-box;
+
         }
 
 
 
         .header {
             background: #4caf50;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
             color: white;
             font-size: 20px;
             font-weight: bold;
-            margin-bottom: 15px;
+            margin-bottom: 33px;
             width: 100%;
             max-width: 400px;
             border-radius: 15px;
@@ -67,9 +42,9 @@
             border-radius: 10px;
             margin: 10px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
+            width: 350px;
             text-align: left;
+
         }
 
         .options {
@@ -291,10 +266,96 @@
             text-align: left;
             /* Nomor soal di kiri */
         }
+
+        #rules-card {
+            /* Style untuk card rules */
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 20px auto;
+            /* Margin atas bawah dan auto untuk tengah horizontal */
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 385px;
+            /* Lebar card */
+            text-align: left;
+            margin-left: -27px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #rules-card h2 {
+            text-align: center;
+        }
+
+        #rules-card ol {
+            padding-left: 20px;
+            /* Memberi indent pada list */
+        }
+
+        .tombol-kembali {
+            display: inline-block;
+            padding: 10px 10px;
+            background-color: white;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+            padding-left: 13px;
+
+            /* Posisi di pojok kiri atas */
+            position: fixed;
+            /* Penting untuk memposisikan relatif terhadap viewport */
+            top: 10px;
+            /* Jarak dari atas */
+            left: 10px;
+            /* Jarak dari kiri */
+        }
+
+        .tombol-kembali:hover {
+            background-color: red;
+        }
+
+        .tombol-home {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: white;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+
+            /* Posisi di pojok kanan atas */
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            /* Perubahan di sini */
+        }
+
+        .tombol-home:hover {
+            background-color: red;
+        }
+
+        .subject-icon {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            color: #4caf50;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body>
+    <a href="/game.html" class="tombol-home">
+        <div class="subject-icon"><i class="fas fa-home"></i></div>
+    </a>
+
+    <a href="/menu.html" class="tombol-kembali">
+        <div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div>
+    </a>
 
     <div class="header">English House Quiz</div>
     <div class="card-container">
@@ -309,6 +370,8 @@
             <div class="options" id="options-container"></div>
         </div>
     </div>
+
+
     <div class="result" id="result"></div>
 
     <div id="game-over">
@@ -317,17 +380,16 @@
     </div>
     <script>
         const questions = [
-            { text: "Where do students usually study in school?", options: ["Library", "Gym", "Playground", "Cafeteria"], answer: "Library" },
-            { text: "What is the room for physical activities in school?", options: ["Classroom", "Gym", "Cafeteria", "Auditorium"], answer: "Gym" },
-            { text: "Where do students gather for assemblies?", options: ["Library", "Auditorium", "Classroom", "Cafeteria"], answer: "Auditorium" },
-            { text: "Where do students keep their books and personal items?", options: ["Locker", "Classroom", "Playground", "Library"], answer: "Locker" },
-            { text: "What do you call the area for sports and games in school?", options: ["Gym", "Playground", "Library", "Hallway"], answer: "Playground" },
-            { text: "Where do students have lunch in school?", options: ["Classroom", "Cafeteria", "Library", "Gym"], answer: "Cafeteria" },
-            { text: "Where are science experiments typically conducted?", options: ["Science Lab", "Classroom", "Library", "Playground"], answer: "Science Lab" },
-            { text: "What is the room where students are taught subjects?", options: ["Library", "Classroom", "Gym", "Cafeteria"], answer: "Classroom" },
-            { text: "Where do students hang out during breaks?", options: ["Cafeteria", "Classroom", "Playground", "Hallway"], answer: "Playground" },
-            { text: "Where do you go to meet the school principal?", options: ["Office", "Classroom", "Gym", "Library"], answer: "Office" }
-
+            { text: "Where do you cook meals?", options: ["Bedroom", "Kitchen", "Bathroom", "Living Room"], answer: "Kitchen" },
+            { text: "What is the room for sleeping called?", options: ["Dining Room", "Garage", "Bedroom", "Attic"], answer: "Bedroom" },
+            { text: "Where do you usually watch TV?", options: ["Kitchen", "Bathroom", "Living Room", "Garden"], answer: "Living Room" },
+            { text: "Where do you take a shower?", options: ["Bedroom", "Kitchen", "Bathroom", "Garage"], answer: "Bathroom" },
+            { text: "What do you call the space for parking a car?", options: ["Attic", "Garage", "Basement", "Garden"], answer: "Garage" },
+            { text: "Where do you eat meals?", options: ["Dining Room", "Bedroom", "Bathroom", "Living Room"], answer: "Dining Room" },
+            { text: "What is the room under the house called?", options: ["Attic", "Roof", "Basement", "Garden"], answer: "Basement" },
+            { text: "What is the top covering of a house called?", options: ["Wall", "Window", "Roof", "Door"], answer: "Roof" },
+            { text: "What do you call the outdoor area around a house?", options: ["Kitchen", "Bathroom", "Garage", "Garden"], answer: "Garden" },
+            { text: "Where might you store old things in a house?", options: ["Bedroom", "Attic", "Kitchen", "Bathroom"], answer: "Attic" },
         ];
 
         let currentQuestion = 0;

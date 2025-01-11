@@ -366,9 +366,9 @@
 </head>
 
 <body>
-    <audio id="background-music" loop autoplay>
+    <audio id="background-music" loop>
         <source src="mp3/backsound.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        Browser Anda tidak mendukung elemen audio.
     </audio>
     <audio id="click-sound">
         <source src="mp3/click.mp3" type="audio/mpeg">
@@ -401,22 +401,13 @@
             <div class="options" id="options-container"></div>
         </div>
     </div>
-    <div id="rules-card">
-        <h2>! Rules !</h2>
-        <ol>
-            <li>Answer each question by selecting one of the available options.</li>
-            <li>Each correct answer will earn 10 points.</li>
-            <li>Each incorrect answer will deduct 10 points. If the score is less than 10, the score will become 0.</li>
-            <li>You have 3 chances (lives). If you run out of lives, the game ends.</li>
-            <li>Most Importantly, give this game a five-star rating in Playstore, Have fun😉 .</li>
-        </ol>
-    </div>
+    
 
     <div class="result" id="result"></div>
 
     <div id="game-over">
         <p id="game-over-message">Game Over!</p>
-        <a href="/.html"><button onclick="restartGame()">Restart</button></a>
+        <a href="/home.html"><button onclick="restartGame()">Restart</button></a>
     </div>
     <script>
         const questions = [
@@ -556,17 +547,17 @@
         const clickSound = document.getElementById('click-sound');
         const correctSound = document.getElementById('correct-sound');
         const wrongSound = document.getElementById('wrong-sound');
-        // Fungsi untuk memulai atau me-resume musik latar
         function playBackgroundMusic() {
-            backgroundMusic.play();
-        }
+            backgroundMusic.play().catch(error => {
+                console.error("Autoplay dicegah:", error);
+                alert("Klik di halaman untuk mengaktifkan suara."); // Minta interaksi pengguna
+                document.addEventListener('click', function playOnce() {
+                    backgroundMusic.play();
+                    document.removeEventListener('click', playOnce);
+                });
 
-        // Fungsi untuk menghentikan musik latar
-        function stopBackgroundMusic() {
-            backgroundMusic.pause();
-            backgroundMusic.currentTime = 0; // Reset ke awal
+            });
         }
-
 
         function playClickSound() {
             clickSound.currentTime = 0;

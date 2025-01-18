@@ -64,9 +64,13 @@
         .subject-icon {
             display: flex;
             align-items: center;
-            font-size: 18px;
-            color: #4caf50;
+            font-size: 30px;
+            color: black;
             margin-right: 10px;
+            transition: .4s;
+        }
+        .subject-icon:hover{
+font-size: 35px;
         }
 
         .subject-name {
@@ -91,7 +95,6 @@
         .tombol-kembali {
             display: inline-block;
             padding: 10px 10px;
-            background-color: white;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -104,15 +107,9 @@
             top: 10px;    /* Jarak dari atas */
             left: 10px;   /* Jarak dari kiri */
         }
-
-        .tombol-kembali:hover {
-            background-color: red;
-        }
         .tombol-home {
             display: inline-block;
             padding: 10px 15px;
-            background-color: white;
-            color: white;
             text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
@@ -124,9 +121,7 @@
             right: 10px; /* Perubahan di sini */
         }
 
-        .tombol-home:hover {
-            background-color: red;
-        }
+     
         
     </style>
 </head>
@@ -139,7 +134,7 @@
     <a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
 
 <div class="header">Materi</div>
-<a href="/home.html" >
+<a href="home.html" >
 <div class="subject">
     
     <div class="subject-icon"><i class="fas fa-home-lg-alt"></i></div>
@@ -154,7 +149,7 @@
     <div class="subject-score">2</div>
 </div>
 </a>
-<a href="englis3.html">
+<a href="jungle.html">
 
 <div class="subject">
     <div class="subject-icon"><i class="fas fa-tree"></i></div>

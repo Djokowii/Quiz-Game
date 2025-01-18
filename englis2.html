@@ -279,7 +279,7 @@
         .tombol-kembali {
             display: inline-block;
             padding: 10px 10px;
-            background-color: white;
+
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -293,13 +293,10 @@
             left: 10px;   /* Jarak dari kiri */
         }
 
-        .tombol-kembali:hover {
-            background-color: red;
-        }
         .tombol-home {
             display: inline-block;
             padding: 10px 15px;
-            background-color: white;
+
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -312,20 +309,37 @@
             right: 10px; /* Perubahan di sini */
         }
 
-        .tombol-home:hover {
-            background-color: red;
-        }
+        
         .subject-icon {
             display: flex;
             align-items: center;
-            font-size: 18px;
-            color: #4caf50;
+            font-size: 30px;
+            color: black;
             margin-right: 10px;
+        }
+        .subject-icon:hover{
+            font-size: 35px;
         }
     </style>
 </head>
 
 <body>
+    <audio id="background-music" loop>
+        <source src="mp3/backsound.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <audio id="click-sound">
+        <source src="mp3/click.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <audio id="correct-sound">
+        <source src="mp3/benar.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    <audio id="wrong-sound">
+        <source src="mp3/wrong.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
     <a href="game.html" class="tombol-home">  
         <div class="subject-icon"><i class="fas fa-home"></i></div>
     </a>
@@ -344,22 +358,14 @@
             <div class="options" id="options-container"></div>
         </div>
     </div>
-    <div id="rules-card">
-        <h2>! Rules !</h2>
-        <ol>
-            <li>Answer each question by selecting one of the available options.</li>
-            <li>Each correct answer will earn 10 points.</li>
-            <li>Each incorrect answer will deduct 10 points. If the score is less than 10, the score will become 0.</li>
-            <li>You have 3 chances (lives). If you run out of lives, the game ends.</li>
-            <li>Most Importantly, give this game a five-star rating in Playstore, Have fun😉 .</li>
-        </ol>
-    </div>
+   
+      
 
     <div class="result" id="result"></div>
 
     <div id="game-over">
         <p id="game-over-message">Game Over!</p>
-        <a href="menu.html"><button onclick="restartGame()">Restart</button></a>
+        <a href="englis2.html"><button onclick="restartGame()">Restart</button></a>
     </div>
     <script>
         const questions = [
@@ -401,6 +407,16 @@ livesDisplay.innerText = `Lives: ${lives}`; // Inisialisasi tampilan awal
                 gameOverScreen.style.display = 'block';
                 return;
             }
+            questions[currentQuestion].options.forEach(option => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                optionElement.innerText = option;
+                optionElement.addEventListener('click', () => {
+                    playClickSound();
+                    checkAnswer(option);
+                });
+                optionsContainer.appendChild(optionElement);
+            });
             questionNumberDisplay.innerText = `${currentQuestion + 1}/${totalQuestions}`; // Update nomor soal
             questionText.innerText = questions[currentQuestion].text;
             optionsContainer.innerHTML = '';
@@ -476,7 +492,49 @@ livesDisplay.innerText = `Lives: ${lives}`; // Inisialisasi tampilan awal
                     gameOverScreen.style.display = 'block';
                 }
             }
+            if (selectedAnswer === questions[currentQuestion].answer) {
+                playCorrectSound(); // Putar suara benar
+                // ... (kode untuk jawaban benar sebelumnya)
+            } else {
+                playWrongSound(); // Putar suara salah
+                // ... (kode untuk jawaban salah sebelumnya)
+            }
         }
+        const backgroundMusic = document.getElementById('background-music');
+        const clickSound = document.getElementById('click-sound');
+        const correctSound = document.getElementById('correct-sound');
+        const wrongSound = document.getElementById('wrong-sound');
+        function playBackgroundMusic() {
+            backgroundMusic.play().catch(error => {
+                console.error("Autoplay dicegah:", error);
+                alert("Klik di halaman untuk mengaktifkan suara."); // Minta interaksi pengguna
+                document.addEventListener('click', function playOnce() {
+                    backgroundMusic.play();
+                    document.removeEventListener('click', playOnce);
+                });
+
+            });
+        }
+
+        function playClickSound() {
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+
+        function playCorrectSound() {
+            correctSound.currentTime = 0;
+            correctSound.play();
+        }
+
+        function playWrongSound() {
+            wrongSound.currentTime = 0;
+            wrongSound.play();
+        }
+
+
+        // Tambahkan event listener untuk memastikan musik diputar saat halaman dimuat
+        window.addEventListener('load', playBackgroundMusic);
+
                 
             function endGame(message) {
             alert(message);

@@ -53,16 +53,22 @@
 
 
         .header {
-            background: #4caf50;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 33px;
-            width: 100%;
-            max-width: 400px;
-            border-radius: 15px;
+            padding: 35px;
+            background: linear-gradient(135deg, #6c63ff, #8a6eff);
+            height: 120px;
+            animation: gradient 5s infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background: linear-gradient(135deg, #6c63ff, #8a6eff);
+            }
+            50% {
+                background: linear-gradient(135deg, #8a6eff, #6c63ff);
+            }
+            100% {
+                background: linear-gradient(135deg, #6c63ff, #8a6eff);
+            }
         }
 
         .question {
@@ -319,7 +325,7 @@
         .tombol-kembali {
             display: inline-block;
             padding: 10px 10px;
-            background-color: white;
+
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -333,13 +339,10 @@
             left: 10px;   /* Jarak dari kiri */
         }
 
-        .tombol-kembali:hover {
-            background-color: red;
-        }
+       
         .tombol-home {
             display: inline-block;
             padding: 10px 15px;
-            background-color: white;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -352,14 +355,12 @@
             right: 10px; /* Perubahan di sini */
         }
 
-        .tombol-home:hover {
-            background-color: red;
-        }
+        
         .subject-icon {
             display: flex;
             align-items: center;
-            font-size: 18px;
-            color: #4caf50;
+            font-size: 30px;
+            color: white;
             margin-right: 10px;
         }
     </style>
@@ -407,7 +408,7 @@
 
     <div id="game-over">
         <p id="game-over-message">Game Over!</p>
-        <a href="/home.html"><button onclick="restartGame()">Restart</button></a>
+        <a href="home.html"><button onclick="restartGame()">Restart</button></a>
     </div>
     <script>
         const questions = [

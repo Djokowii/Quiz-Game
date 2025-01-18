@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Game</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,28 +15,25 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: url('2.jpg') no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6c63ff, #8360c3);
+            color: #fff;
+            text-align: center;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            text-align: center;
+            overflow: hidden;
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: 10px;
-            color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
         p {
-            font-size: 1rem;
-            color: #ffffff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            font-size: 1.2rem;
             margin-bottom: 20px;
         }
 
@@ -42,53 +41,86 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        /* Button Container */
+        .button-container {
+            display: flex;
+            align-items: center;
             justify-content: center;
+            gap: 20px; /* Jarak antar tombol */
+            margin-top: 20px;
         }
 
-        .responsive-image {
-            max-width: 90%;
+        /* Start Button */
+        .start-button img {
+            width: 200px;
             height: auto;
-            margin-bottom: 20px;
-        }
-
-        .start-button {
-            background: none;
-            border: none;
-            padding: 0;
+            border-radius: 10px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             cursor: pointer;
-            transition: transform 0.4s ease;
         }
 
-        .start-button:hover {
+        .start-button img:hover {
             transform: scale(1.1);
+            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.6);
         }
 
-        .start-button:active {
-            transform: scale(0.95);
+        /* Icon Buttons */
+        .subject-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            color: #6c63ff;
+            cursor: pointer;
+            transition: transform 0.4s, background-color 0.4s, box-shadow 0.4s;
+        }
+
+        .subject-icon:hover {
+            transform: scale(1.2);
+            background-color: #6c63ff;
+            color: #fff;
+            box-shadow: 0px 6px 15px rgba(108, 99, 255, 0.7);
+        }
+
+        /* Keyframes Animations */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .start-button img {
-            width: 600px; /* Perbesar ukuran tombol */
-            height: auto;
-            display: block;
+            animation: pulse 2s infinite;
         }
 
-        /* Media query untuk layar kecil */
-        @media (max-width: 600px) {
+        /* Media Query for Smaller Screens */
+        @media (max-width: 76px) {
             h1 {
-                font-size: 1.5rem;
-            }
-
-            p {
-                font-size: 0.9rem;
+                font-size: 2rem;
             }
 
             .start-button img {
-                width: 180px; /* Ukuran tombol lebih kecil pada layar kecil */
+                width: 150px;
             }
 
-            .container {
-                margin-top: -20px;
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .subject-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
         }
     </style>
@@ -97,15 +129,44 @@
 <body>
     <div class="container">
         <div class="kotak">
-            <img src="/boyzen.png" alt="" class="responsive-image">
+            <img src="boyzen.png" alt="Quiz Logo" class="responsive-image">
         </div>
-        <a href="/cos.html">
-            <button class="start-button" id="startButton">
-                <img src="/tombol.png" alt="Start Quiz">
-            </button>
-        </a>
-        
+        <div class="button-container">
+            <!-- Info Icon -->
+            <a href="info.html" class="subject-icon" title="Info">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            
+            <!-- Start Button -->
+            <a href="cos.html" class="start-button">
+                <img src="tombol.png" alt="Start Quiz">
+            </a>
+
+            <!-- Rules Icon -->
+            <a href="rules.html" class="subject-icon" title="Rules">
+                <i class="fas fa-book"></i>
+            </a>
+        </div>
     </div>
+
+    <script>
+        const hoverSound = document.getElementById('hover-sound');
+        const buttons = document.querySelectorAll('.start-button img, .subject-icon');
+
+        buttons.forEach(button => {
+            button.addEventListener('mouseover', () => {
+                hoverSound.currentTime = 0;
+                hoverSound.play();
+            });
+        });
+
+        const backgroundMusic = document.getElementById('background-music');
+        window.addEventListener('load', () => {
+            backgroundMusic.play().catch(() => {
+                console.error("Autoplay blocked. Click anywhere to play the music.");
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Profile with Animation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .profile-card {
+            background: #fff;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            overflow: hidden;
+            transform: scale(0.9);
+            box-shadow:0 15px 50px rgb(0, 0, 0);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .profile-card:hover {
+            transform: scale(1);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-card .header {
+            background: linear-gradient(135deg, #6c63ff, #8a6eff);
+            height: 120px;
+            animation: gradient 5s infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background: linear-gradient(135deg, #6c63ff, #8a6eff);
+            }
+            50% {
+                background: linear-gradient(135deg, #8a6eff, #6c63ff);
+            }
+            100% {
+                background: linear-gradient(135deg, #6c63ff, #8a6eff);
+            }
+        }
+
+        .profile-card .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            margin-top: -50px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover .avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .profile-card h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 15px 0 5px;
+            color: #333;
+        }
+
+        .profile-card p {
+            font-size: 14px;
+            color: #777;
+            margin: 0 20px 15px;
+        }
+
+        .profile-card .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0 20px;
+        }
+
+        .profile-card .socials a {
+            color: #fff;
+            background: #6c63ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .profile-card .socials a:hover {
+            background: #8a6eff;
+            transform: scale(1.2);
+        }
+
+        .profile-card .buttons {
+            margin: 20px;
+            
+        }
+
+        .profile-card .buttons a {
+            text-decoration: none;
+            color: #fff;
+            background: #6c63ff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.3s ease;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .profile-card .buttons a:hover {
+            background: #8a6eff;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="header"></div>
+        <img src="anim.jpg" alt="Profile Picture" class="avatar">
+        <h2>GameDev</h2>
+        <p>Frontend Developer | Tech Enthusiast | Blogger</p>
+        <div class="socials">
+            <a href="https://facebook.com/youcnock"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/youcnock"><i class="fab fa-tiktok"></i></a>
+            <a href="https://instagram.com/youcnock"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@mishiomyxmoskov"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="buttons">
+            <a href="game.html">Start Now</a>
+            <a href="rules.html">Game Rules</a>
+        </div>
+    </div>
+</body>
+</html>

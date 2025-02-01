@@ -29,7 +29,31 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             /* Opsional: Tambahkan bayangan */
         }
+        
+        .header {
+      font-size: 2.5rem;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, white, wheat, black);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      animation: pulse 2s infinite;
+    }
 
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+      }
+    }
 
         body {
             display: flex;
@@ -165,7 +189,6 @@
         #score {
             font-size: 1.2em;
             font-weight: bold;
-            color: blue;
             /* Warna skor */
         }
 
@@ -249,7 +272,7 @@
             font-size: 1.4em;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #333;
+            color: black;
         }
 
         .options div {
@@ -297,7 +320,7 @@
             font-size: 1em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #555;
+            color: black;
             text-align: left;
             /* Nomor soal di kiri */
         }
@@ -363,6 +386,102 @@
             color: white;
             margin-right: 10px;
         }
+        .brutalist-card {
+            width: 320px;
+            border: 4px solid #000;
+            background-color: #fff;
+            padding: 1.5rem;
+            box-shadow: 10px 10px 0 #000;
+            font-family: "Arial", sans-serif;
+            animation: scaleCard 3s infinite; /* Apply the animation here */
+        }
+
+        .brutalist-card__header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #000;
+            padding-bottom: 1rem;
+        }
+
+        .brutalist-card__alert {
+            font-weight: 900;
+            color: #000;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .brutalist-card__actions {
+            margin-top: 1rem;
+        }
+
+        .brutalist-card__button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 3px solid #000;
+            background-color: #fff;
+            color: #000;
+            position: relative;
+            transition: all 0.2s ease;
+            box-shadow: 5px 5px 0 #000;
+            overflow: hidden;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .brutalist-card__button--read {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .brutalist-card__button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            transition: all 0.6s;
+        }
+
+        .brutalist-card__button:hover::before {
+            left: 100%;
+        }
+
+        .brutalist-card__button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 #000;
+        }
+
+        .brutalist-card__button--mark:hover {
+            background-color: #296fbb;
+            border-color: #296fbb;
+            color: #fff;
+            box-shadow: 7px 7px 0 #004280;
+        }
+
+        .brutalist-card__button--read:hover {
+            background-color: #ff0000;
+            border-color: #ff0000;
+            color: #fff;
+            box-shadow: 7px 7px 0 #800000;
+        }
+
+        .brutalist-card__button:active {
+            transform: translate(5px, 5px);
+            box-shadow: none;
+        }
+
     </style>
 </head>
 
@@ -389,20 +508,27 @@
 
     <a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
 
-    <div class="header">English House Quiz</div>
-    <div class="card-container">
+    <div class="brutalist-card">
+        <div class="brutalist-card__header">
+            <div class="brutalist-card__alert">English House Quiz</div>
+            
+        </div>
+       
+    
         <div class="lives" id="lives">Lives: 3</div>
         <div id="score">Score: 0</div>
-    </div>
-
-    <div id="quiz">
-        <div class="question">
-            <div id="question-number">1/10</div>
-            <p id="question-text"></p>
-            <div class="options" id="options-container"></div>
-        </div>
-    </div>
     
+
+        <div class="brutalist-card__header" style="border-bottom: none;">
+            <div class="brutalist-card__alert"><p id="question-text"></p></div>
+            
+        </div>
+       
+            <div id="question-number">1/10</div>
+            
+            <div class="options" id="options-container"></div>
+       
+    </div>
 
     <div class="result" id="result"></div>
 
@@ -440,37 +566,29 @@
         const totalQuestions = questions.length;
 
         function loadQuestion() {
-            if (lives < 1) {
-                gameOverMessage.innerText = "Game Over!";
-                gameOverScreen.style.display = 'block';
-                return;
-            }
-            if (currentQuestion >= questions.length) {
-                gameOverMessage.innerText = `Congratulations! You finished the quiz. Your final score is: ${score}`;
-                gameOverScreen.style.display = 'block';
-                return;
-            }
-            questions[currentQuestion].options.forEach(option => {
-                const optionElement = document.createElement('div');
-                optionElement.classList.add('option');
-                optionElement.innerText = option;
-                optionElement.addEventListener('click', () => {
-                    playClickSound();
-                    checkAnswer(option);
-                });
-                optionsContainer.appendChild(optionElement);
-            });
-        }
-            questionNumberDisplay.innerText = `${currentQuestion + 1}/${totalQuestions}`; // Update nomor soal
-            questionText.innerText = questions[currentQuestion].text;
-            optionsContainer.innerHTML = '';
-            questions[currentQuestion].options.forEach(option => {
-                const optionElement = document.createElement('div');
-                optionElement.classList.add('option');
-                optionElement.innerText = option;
-                optionElement.addEventListener('click', () => checkAnswer(option));
-                optionsContainer.appendChild(optionElement);
-            });
+    if (lives < 1) {
+        gameOverMessage.innerText = "Game Over!";
+        gameOverScreen.style.display = 'block';
+        return;
+    }
+    if (currentQuestion >= questions.length) {
+        gameOverMessage.innerText = `Congratulations! You finished the quiz. Your final score is: ${score}`;
+        gameOverScreen.style.display = 'block';
+        return;
+    }
+
+    questionNumberDisplay.innerText = `${currentQuestion + 1}/${totalQuestions}`; // Update nomor soal
+    questionText.innerText = questions[currentQuestion].text;
+    optionsContainer.innerHTML = ''; // Clear previous options
+    questions[currentQuestion].options.forEach(option => {
+        const optionElement = document.createElement('div');
+        optionElement.classList.add('option');
+        optionElement.innerText = option;
+        optionElement.addEventListener('click', () => checkAnswer(option));
+        optionsContainer.appendChild(optionElement);
+    });
+}
+
         
         function checkAnswer(selectedAnswer) {
             resultDisplay.innerText = ''; // Clear previous text

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Material</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      background-color: #2196F3;
+      color: white;
+      padding: 20px 0;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .content {
+      width: 80%;
+      margin-top: 30px;
+    }
+
+    .material-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .material-list li {
+      background-color: white;
+      margin: 15px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .material-list li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .material-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2196F3;
+    }
+
+    .material-list p {
+      font-size: 1em;
+      color: #777;
+    }
+
+    .material-list button {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .material-list button:hover {
+      background-color: #1976D2;
+    }
+    .tombol-kembali {
+            display: inline-block;
+            padding: 10px 10px;
+
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+            padding-left: 13px;
+
+            /* Posisi di pojok kiri atas */
+            position: fixed; /* Penting untuk memposisikan relatif terhadap viewport */
+            top: 10px;    /* Jarak dari atas */
+            left: 10px;   /* Jarak dari kiri */
+        }
+
+       
+        .tombol-home {
+            display: inline-block;
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding-right: 5px;
+
+            /* Posisi di pojok kanan atas */
+            position: fixed;
+            top: 10px;
+            right: 10px; /* Perubahan di sini */
+        }
+
+        
+        .subject-icon {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            margin-right: 10px;
+        }
+
+  </style>
+</head>
+<body>
+  <a href="game.html" class="tombol-home">  
+    <div class="subject-icon"><i class="fas fa-home"></i></div>
+</a>
+
+<a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
+
+  <div class="header">
+    <h1>Lesson Material</h1>
+  </div>
+
+  <div class="content">
+    <ul class="material-list">
+      <li>
+        <div>
+          <div class="material-title">Home</div>
+          <p>About home.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/homer.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Schools</div>
+          <p>Learn about different types of schools.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/schoolsr.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Jungle</div>
+          <p>Discover the wildlife and nature of jungles.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/jungler.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Sea</div>
+          <p>Learn about marine life and ocean ecosystems.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/sear.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Mosque</div>
+          <p>Explore places of worship and their significance.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/mosquer.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Office</div>
+          <p>Understand how offices function in daily life.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/officer.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Kitchen</div>
+          <p>Learn about kitchen tools and food preparation.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/kitchenr.html'">View</button>
+      </li>
+      <li>
+        <div>
+          <div class="material-title">Toilet</div>
+          <p>Understand hygiene and sanitation importance.</p>
+        </div>
+        <button type="button" onclick="playSound(event); location.href='materi/toiletr.html'">View</button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function playSound(event) {
+      console.log("Button clicked, playing sound...");
+      // Tambahkan logika untuk memutar suara di sini jika ada
+    }
+  </script>
+
+</body>
+</html>

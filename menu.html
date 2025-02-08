@@ -86,6 +86,10 @@
             color: #000;
             font-size: 1.5rem;
             text-transform: uppercase;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin-left: 66px;
         }
 
         .brutalist-card__actions {
@@ -186,7 +190,6 @@
             display: flex;
             align-items: center;
             font-size: 30px;
-            color: black;
             margin-right: 10px;
         }
 
@@ -210,25 +213,37 @@
 
     <div class="brutalist-card">
         <div class="brutalist-card__header">
-            <div class="brutalist-card__alert">|||||||| Material |||||||</div>
+            <div class="brutalist-card__alert"> Material </div>
         </div>
         <div class="brutalist-card__actions">
-            <a class="brutalist-card__button brutalist-card__button--mark" href="home.html" onclick="playSound(event)">Home</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="englis2.html" onclick="playSound(event)">Schools</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="jungle.html" onclick="playSound(event)">Jungle</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="sea.html" onclick="playSound(event)">Sea</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="mosque.html" onclick="playSound(event)">Mosque</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="office.html" onclick="playSound(event)">Office</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="kitchen.html" onclick="playSound(event)">Kitchen</a>
-            <a class="brutalist-card__button brutalist-card__button--mark" href="toilet.html" onclick="playSound(event)">Toilet</a>
+            <a class="brutalist-card__button brutalist-card__button--mark" href="home.html" onclick="playSound(event)">Math</a>
+            <a class="brutalist-card__button brutalist-card__button--mark" href="englis2.html" onclick="playSound(event)">History</a>
+            <a class="brutalist-card__button brutalist-card__button--mark" href="jungle.html" onclick="playSound(event)">Geography</a>
+   
         </div>
     </div>
 
     <audio id="backgroundMusic" autoplay loop>
         <source src="mp3/backsound.mp3" type="audio/mpeg">
     </audio>
+    <audio id="hover-sound">
+    <source src="mp3/click.mp3" type="audio/mpeg">
+</audio>
+
 
     <script>
+        // Fungsi untuk memainkan suara saat hover
+function playHoverSound() {
+    let sound = document.getElementById("hover-sound");
+    sound.currentTime = 0; // Reset agar suara bisa diputar berulang
+    sound.play();
+}
+
+// Tambahkan event listener ke semua tombol dengan class "brutalist-card__button"
+document.querySelectorAll(".brutalist-card__button").forEach(button => {
+    button.addEventListener("mouseenter", playHoverSound);
+});
+
         function playSound(event) {
             event.preventDefault();
             const sound = document.getElementById('click-sound');

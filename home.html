@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Quiz</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
     <style>
         #quiz {
             display: flex;
@@ -186,21 +187,17 @@
             /* Green border for highlight */
         }
 
-        #score {
-            font-size: 1.2em;
-            font-weight: bold;
-            /* Warna skor */
-        }
+  
 
         #game-over {
             display: none;
             /* Sembunyikan awalnya */
             position: fixed;
             /* Posisi tetap di layar */
-            top: 0;
-            left: 0;
+            top: 160px;
+            left: 65px;
             width: 100%;
-            height: 100%;
+            height: 250px;
             background-color: rgba(0, 0, 0, 0.5);
             /* Latar belakang semi-transparan */
             color: white;
@@ -211,19 +208,94 @@
             /* Posisikan teks di tengah vertikal */
         }
 
-        #game-over button {
-            background-color: #4CAF50;
-            /* Warna tombol */
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 1em;
-            margin-top: 20px;
-            cursor: pointer;
-        }
+        #game-over {
+    width: 320px;
+    border: 4px solid #000;
+    background-color: #fff;
+    padding: 1.5rem;
+    box-shadow: 10px 10px 0 #000;
+    font-family: "Arial", sans-serif;
+    text-align: center;
+    margin-right: 20px;
+}
+
+#game-over p {
+    font-weight: 900;
+    color: #000;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #000;
+    padding-bottom: 1rem;
+}
+
+#game-over .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#game-over button {
+    width: 100%;
+    padding: 0.75rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 3px solid #000;
+    background-color: #fff;
+    color: #000;
+    position: relative;
+    transition: all 0.2s ease;
+    box-shadow: 5px 5px 0 #000;
+    cursor: pointer;
+}
+
+#game-over button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.6s;
+}
+
+#game-over button:hover::before {
+    left: 100%;
+}
+
+#game-over button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 #000;
+}
+
+#restart-button button {
+    background-color: #000;
+    color: #fff;
+    
+}
+
+#restart-button button:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    color: #fff;
+    box-shadow: 7px 7px 0 #800000;
+}
+
+#next-button button:hover {
+    background-color: #296fbb;
+    border-color: #296fbb;
+    color: #fff;
+    box-shadow: 7px 7px 0 #004280;
+}
+
+#game-over button:active {
+    transform: translate(5px, 5px);
+    box-shadow: none;
+}
+
 
         .card-container {
             display: flex;
@@ -276,22 +348,56 @@
         }
 
         .options div {
-            padding: 15px;
-            margin-bottom: 10px;
-            background-color: #eee;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            /* Transisi untuk hover effect */
-            border: 1px solid #ddd;
+            left: 10px;
+            display: block;
+            width: 300px;
+            padding: 0.90rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 3px solid #000;
+            background-color: #fff;
+            color: #000;
+            position: relative;
+            transition: all 0.2s ease;
+            box-shadow: 5px 5px 0 #000;
+            overflow: hidden;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }           
+        .options div:hover {
+            background-color: #296fbb;
+            border-color: #296fbb;
+            color: #fff;
+            box-shadow: 7px 7px 0 #004280;
+        }
+        .options div::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            transition: all 0.6s;
+        }
+        .options div:hover::before {
+            left: 100%;
         }
 
         .options div:hover {
-            background-color: #ddd;
-            /* Warna latar belakang saat hover */
-            border: 1px solid #bbb;
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 #000;
         }
 
+        .options div:active {
+            transform: translate(5px, 5px);
+            box-shadow: none;
+        }
+       
         .correct {
             background-color: #a0f0a0 !important;
         }
@@ -300,20 +406,52 @@
             background-color: #f0a0a0 !important;
         }
 
-        .lives {
-            display: flex;
-            /* Agar icon hati berjejer horizontal */
-            align-items: center;
-            /* Agar icon hati berada di tengah vertikal */
+        #score {
+    margin-left: 240px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: -20px;
+    color: black; /* Warna teks skor */
         }
 
-        .lives i {
-            margin-right: 5px;
-            /* Memberi jarak antar icon hati */
-            color: red;
-            /* Warna hati */
-            font-size: 1.2em;
-        }
+.lives {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Menjaga ikon hati di sisi kiri */
+    margin-top: 10px;
+}
+
+.lives i {
+    margin-right: 5px;
+    color: red;
+    font-size: 1.8em;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Animasi hati */
+.lives i:hover {
+    transform: scale(1.2); /* Membesarkan ikon hati saat hover */
+    color: #ff4d4d; /* Warna merah muda lebih cerah saat hover */
+}
+
+/* Efek animasi untuk hati yang berdenyut */
+@keyframes heartPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Menambahkan animasi pada ikon hati */
+.lives i {
+    animation: heartPulse 1.5s infinite; /* Animasi berdenyut */
+}
+
 
         #question-number {
             /* Style untuk nomor soal */
@@ -387,7 +525,7 @@
             margin-right: 10px;
         }
         .brutalist-card {
-            width: 320px;
+            width: 350px;
             border: 4px solid #000;
             background-color: #fff;
             padding: 1.5rem;
@@ -406,9 +544,9 @@
         }
 
         .brutalist-card__alert {
-            font-weight: 900;
+            font-weight: 800;
             color: #000;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             text-transform: uppercase;
         }
 
@@ -482,6 +620,72 @@
             box-shadow: none;
         }
 
+        .options :hover{
+            background-color: #296fbb;
+            border-color: #296fbb;
+            color: #fff;
+            box-shadow: 7px 7px 0 #004280;
+        }
+        .options-card_button{
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 3px solid #000;
+            background-color: #fff;
+            color: #000;
+            position: relative;
+            transition: all 0.2s ease;
+            box-shadow: 5px 5px 0 #000;
+            overflow: hidden;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        } 
+        .options-card_button--read{
+            background-color: #000;
+            color: #fff;
+        }
+        .options-card_button::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            transition: all 0.6s;
+        }
+        .options-card__button:hover::before {
+            left: 100%;
+        }
+        .optiona-card__button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 #000;
+        }
+        .options-card__button--mark:hover {
+            background-color: #296fbb;
+            border-color: #296fbb;
+            color: #fff;
+            box-shadow: 7px 7px 0 #004280;
+        }
+        .options-card__button--read:hover {
+            background-color: #ff0000;
+            border-color: #ff0000;
+            color: #fff;
+            box-shadow: 7px 7px 0 #800000;
+        }
+        .options-card__button:active {
+            transform: translate(5px, 5px);
+            box-shadow: none;
+        }
+
+
     </style>
 </head>
 
@@ -509,46 +713,97 @@
     <a href="javascript:history.back()" class="tombol-kembali"><div class="subject-icon"><i class="fas fa-arrow-circle-left"></i></div></a>
 
     <div class="brutalist-card">
-        <div class="brutalist-card__header">
-            <div class="brutalist-card__alert">English House Quiz</div>
-            
-        </div>
-       
-    
-        <div class="lives" id="lives">Lives: 3</div>
+        <div class="lives" id="lives">
+            <i class="fas fa-heart heart" id="heart1"></i> <!-- Hati pertama -->
+            <i class="fas fa-heart heart" id="heart2"></i> <!-- Hati kedua -->
+            <i class="fas fa-heart heart" id="heart3"></i> <!-- Hati ketiga --></div>
         <div id="score">Score: 0</div>
-    
-
-        <div class="brutalist-card__header" style="border-bottom: none;">
-            <div class="brutalist-card__alert"><p id="question-text"></p></div>
+        <div class="brutalist-card__header">
+            <div class="brutalist-card__alert"> <p id="question-text"></p></div>
             
+        </div><div id="question-number">1/5</div>
+        <div class="options-card__actions">
+            <div class="options" id="options-container">
+                <!-- Opsi akan ditambahkan melalui JavaScript -->
+            </div>
         </div>
-       
-            <div id="question-number">1/10</div>
-            
-            <div class="options" id="options-container"></div>
-       
-    </div>
+     
 
     <div class="result" id="result"></div>
 
-    <div id="game-over">
+    <div id="game-over" style="display: none;">
         <p id="game-over-message">Game Over!</p>
-        <a href="home.html"><button onclick="restartGame()">Restart</button></a>
+    
+        <div class="button-container">
+            <!-- Restart Button -->
+            <a href="home.html" id="restart-button">
+                <button onclick="restartGame()">Restart</button>
+            </a>
+    
+            <!-- Next Button -->
+            <a href="menu.html" id="next-button">
+                <button>Next</button>
+            </a>
+        </div>
     </div>
+    
+    
+    <audio id="hover-sound">
+        <source src="mp3/click.mp3" type="audio/mpeg">
+    </audio>
+    
+    
     <script>
-        const questions = [
-            { text: "Where do you cook meals?", options: ["Bedroom", "Kitchen", "Bathroom", "Living Room"], answer: "Kitchen" },
-            { text: "What is the room for sleeping called?", options: ["Dining Room", "Garage", "Bedroom", "Attic"], answer: "Bedroom" },
-            { text: "Where do you usually watch TV?", options: ["Kitchen", "Bathroom", "Living Room", "Garden"], answer: "Living Room" },
-            { text: "Where do you take a shower?", options: ["Bedroom", "Kitchen", "Bathroom", "Garage"], answer: "Bathroom" },
-            { text: "What do you call the space for parking a car?", options: ["Attic", "Garage", "Basement", "Garden"], answer: "Garage" },
-            { text: "Where do you eat meals?", options: ["Dining Room", "Bedroom", "Bathroom", "Living Room"], answer: "Dining Room" },
-            { text: "What is the room under the house called?", options: ["Attic", "Roof", "Basement", "Garden"], answer: "Basement" },
-            { text: "What is the top covering of a house called?", options: ["Wall", "Window", "Roof", "Door"], answer: "Roof" },
-            { text: "What do you call the outdoor area around a house?", options: ["Kitchen", "Bathroom", "Garage", "Garden"], answer: "Garden" },
-            { text: "Where might you store old things in a house?", options: ["Bedroom", "Attic", "Kitchen", "Bathroom"], answer: "Attic" },
-        ];
+         function showGameOver() {
+        document.getElementById("game-over").style.display = "block";
+        document.getElementById("restart-button").style.display = "inline-block";
+        document.getElementById("next-button").style.display = "inline-block"; // Show Next Button
+    }
+
+    function restartGame() {
+        // Add any logic needed to reset the game state here
+        console.log("Game Restarted!");
+    }
+        
+        function playHoverSound() {
+    let sound = document.getElementById("hover-sound");
+    sound.currentTime = 0; // Reset agar suara bisa diputar berulang
+    sound.play();
+}
+document.getElementById("options-container").addEventListener("mouseenter", event => {
+    if (event.target.tagName === "DIV") {
+        playHoverSound();
+    }
+}, true);
+
+       const questions = [
+    {
+        text: "What days do Andrew, Evelyn, and Farza have math class?",
+        options: ["Tuesday, Thursday, and Saturday", "Monday, Wednesday, and Friday", "Monday, Wednesday, and Saturday", "Tuesday, Thursday, and Friday"],
+        answer: "Monday, Wednesday, and Friday"
+    },
+    {
+        text: "How does Farza feel about math class on Monday?",
+        options: ["Excited", "Confused", "She wishes it wasn’t the first thing on Monday", "Happy"],
+        answer: "She wishes it wasn’t the first thing on Monday"
+    },
+    {
+        text: "What is something Andrew is looking forward to in math class?",
+        options: ["Math games","Group activities" , "Break time", "Lunch"],
+        answer: "Math games"
+    },
+    {
+        text: "What does Evelyn think about group activities?",
+        options: ["She doesn't like them", "She thinks they should be fun", "She prefers individual work", "She is unsure"],
+        answer: "She thinks they should be fun"
+    },
+    {
+        text: "What does Farza suggest they do to make math class better?",
+        options: ["Take notes","Watch videos" , "Skip class", "Help each other out"],
+        answer: "Help each other out"
+    }
+];
+
 
         let currentQuestion = 0;
         let lives = 3;
@@ -565,17 +820,34 @@
         const questionNumberDisplay = document.getElementById('question-number');
         const totalQuestions = questions.length;
 
+        
         function loadQuestion() {
-    if (lives < 1) {
-        gameOverMessage.innerText = "Game Over!";
-        gameOverScreen.style.display = 'block';
-        return;
+            if (lives < 1) {
+    gameOverMessage.innerText = "Game Over!";
+    gameOverScreen.style.display = 'block';
+
+    document.getElementById("restart-button").style.display = "inline-block"; // Tampilkan tombol Restart
+    document.getElementById("next-button").style.display = "none"; // Sembunyikan tombol Next
+
+    return;
+}
+
+if (currentQuestion >= questions.length) {
+    gameOverMessage.innerText = `Congratulations! You finished the quiz. Your final score is: ${score}`;
+    gameOverScreen.style.display = 'block';
+
+    if (score === questions.length) {
+        document.getElementById("restart-button").style.display = "inline-block"; // Tampilkan tombol Next jika skor sempurna
+        document.getElementById("next-button").style.display = "none"; // Sembunyikan tombol Restart jika semua benar
+    } else {
+        document.getElementById("next-button").style.display = "inline-block"; // Tampilkan tombol Restart jika ada jawaban salah
+        document.getElementById("restart-button").style.display = "none"; // Sembunyikan tombol Next
     }
-    if (currentQuestion >= questions.length) {
-        gameOverMessage.innerText = `Congratulations! You finished the quiz. Your final score is: ${score}`;
-        gameOverScreen.style.display = 'block';
-        return;
-    }
+
+    return;
+}
+
+
 
     questionNumberDisplay.innerText = `${currentQuestion + 1}/${totalQuestions}`; // Update nomor soal
     questionText.innerText = questions[currentQuestion].text;
@@ -587,6 +859,7 @@
         optionElement.addEventListener('click', () => checkAnswer(option));
         optionsContainer.appendChild(optionElement);
     });
+    
 }
 
         
@@ -604,7 +877,7 @@
                 resultDisplay.innerText = "Correct!"; // Set text here!
                 resultDisplay.style.color = "green";
                 correctAnswerElement.classList.add('correct');
-                score += 10;
+                score += 20;
                 scoreDisplay.innerText = `Score: ${score}`;
                 resultDisplay.style.opacity = 1; // tampilkan result
                 resultDisplay.style.animation = 'none';
@@ -635,8 +908,8 @@
                 wrongAnswerElement.classList.add('wrong');
                 resultDisplay.style.opacity = 1; // tampilkan result
                 resultDisplay.style.animation = 'none';
-                if (score >= 10) {
-                    score -= 10; // Kurangi score jika jawaban salah
+                if (score >= 20) {
+                    score -= 20; // Kurangi score jika jawaban salah
                     scoreDisplay.innerText = `Score: ${score}`; // Update tampilan score
                 } else {
                     score = 0;
@@ -677,6 +950,7 @@
 
             });
         }
+        
 
         function playClickSound() {
             clickSound.currentTime = 0;
@@ -703,6 +977,8 @@
             alert(message);
             location.reload();
         }
+        
+        
 
         loadQuestion();
 

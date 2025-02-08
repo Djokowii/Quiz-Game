@@ -16,8 +16,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #6c63ff, #8a6eff);
-            animation: gradient 5s infinite;
+            background-image: url(2.jpg);
             color: #fff;
             text-align: center;
             display: flex;
@@ -25,6 +24,7 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            background-size: cover;
         }
 
         @keyframes gradient {
@@ -478,7 +478,7 @@ button:hover .play {
 
             <!-- Start Button -->
  
-      <a href="cos.html" style="text-decoration: none;">     <!-- From Uiverse.io by barisdogansutcu --> 
+      <a href="menu.html" style="text-decoration: none;">     <!-- From Uiverse.io by barisdogansutcu --> 
 <button>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -582,8 +582,48 @@ button:hover .play {
         
     </nav>
   </label>
+  <audio id="hover-sound">
+    <source src="mp3/click.mp3" type="audio/mpeg">
+</audio>
+<audio id="click-sound" src="mp3/click.mp3"></audio>
 
     <script>
+      function playSound(event) {
+    event.preventDefault(); // Prevent immediate navigation
+    const sound = document.getElementById('click-sound');
+    
+    if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+    }
+
+    const target = event.currentTarget.closest('a'); // Ensure it selects the closest `<a>`
+
+    if (target && target.href) {
+        setTimeout(() => {
+            window.location.href = target.href;
+        }, 300); // Delay to allow sound to play
+    }
+}
+
+// Apply event listener to all `<a>` tags containing `<button>`
+document.querySelectorAll("a button").forEach(button => {
+    button.addEventListener("click", playSound);
+});
+
+      function playHoverSound() {
+    let sound = document.getElementById("hover-sound");
+    if (sound) {
+        sound.currentTime = 0; // Reset to allow repeated play
+        sound.play();
+    }
+}
+
+// Select all buttons inside anchor tags and add event listener
+document.querySelectorAll("a button").forEach(button => {
+    button.addEventListener("mouseenter", playHoverSound);
+});
+
         const buttons = document.querySelectorAll('.start-button img, .subject-icon');
 
         buttons.forEach(button => {
